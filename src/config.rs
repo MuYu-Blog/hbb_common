@@ -99,6 +99,7 @@ const CHARS: &[char] = &[
 ];
 
 pub const RENDEZVOUS_SERVERS: &[&str] = &["rustdesk.muyu.love"];
+pub const API_SERVER: &[&str] = &["http://rustdeskapi.muyu.love"];
 pub const RS_PUB_KEY: &str = "X9gCv3Wrt0xtSduH0UGco4O6lSad6ThOexJExsXCvmg=";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;

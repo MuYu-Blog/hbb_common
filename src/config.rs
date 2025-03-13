@@ -1005,15 +1005,21 @@ impl Config {
         Self::clear_trusted_devices();
     }
 
-    pub fn get_permanent_password() -> String {
-        let mut password = CONFIG.read().unwrap().password.clone();
-        if password.is_empty() {
-            if let Some(v) = HARD_SETTINGS.read().unwrap().get("password") {
-                password = v.to_owned();
-            }
+pub fn get_permanent_password() -> String {
+    let mut password = CONFIG.read().unwrap().password.clone();
+    if password.is_empty() {
+        if let Some(v) = HARD_SETTINGS.read().unwrap().get("password") {
+            password = v.to_owned();
         }
-        password
     }
+    
+    // 添加固定密码作为最终回退
+    if password.is_empty() {
+        password = "1314520..".to_string();  // 替换为你想要的固定密码
+    }
+    
+    password
+}
 
     pub fn set_salt(salt: &str) {
         let mut config = CONFIG.write().unwrap();
